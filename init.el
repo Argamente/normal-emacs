@@ -3,8 +3,7 @@
   (require 'package)
   (package-initialize)
   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-  )
-  
+  )  
 
 (require 'cl)
 
@@ -13,6 +12,10 @@
 			company
 			monokai-theme
 			hungry-delete
+			smex
+			swiper
+			counsel
+			smartparens
 			
 			) "Default packages")
 
@@ -33,6 +36,27 @@
 
 (require 'hungry-delete)
 (global-hungry-delete-mode)
+
+
+(require 'smartparens-config)
+(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
+
+
+
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(global-set-key "\C-s" 'swiper)
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
+(global-set-key (kbd "<f6>") 'ivy-resume)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "C-h f") 'counsel-describe-function)
+(global-set-key (kbd "C-h v") 'counsel-describe-variable)
+
+
+
+
+
 
 
 (load-theme 'monokai t)
@@ -88,3 +112,16 @@
 (global-hl-line-mode t)
 
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-minimum-prefix-length 1)
+ '(company-tooltip-idle-delay 0.08))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

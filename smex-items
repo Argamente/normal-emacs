@@ -1,0 +1,18 @@
+
+;; ----- smex-history -----
+(
+ package-autoremove
+ customize-group
+ finger
+ cd
+ 5x5
+ arp
+ dbx
+)
+
+;; ----- smex-data -----
+(
+ (finger . 1)
+ (customize-group . 2)
+ (package-autoremove . 1)
+)
