@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ eval-buffer
+ delete-frame
+ make-frame
+ auto-fill-mode
+ text-mode
+ replace-string
  package-autoremove
- customize-group
- finger
- cd
- 5x5
- arp
- dbx
 )
 
 ;; ----- smex-data -----
@@ -15,4 +15,10 @@
  (finger . 1)
  (customize-group . 2)
  (package-autoremove . 1)
+ (replace-string . 4)
+ (text-mode . 1)
+ (auto-fill-mode . 1)
+ (make-frame . 3)
+ (delete-frame . 1)
+ (eval-buffer . 1)
 )

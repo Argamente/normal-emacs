@@ -16,7 +16,7 @@
 			swiper
 			counsel
 			smartparens
-			
+			web-mode
 			) "Default packages")
 
 (setq package-selected-packages fred/packages)
@@ -112,6 +112,21 @@
 (global-hl-line-mode t)
 
 
+
+(defun indent-buffer()
+  "Indent the whole buffer."
+  (interactive)
+  (save-excursion
+    (indent-region (point-min) (point-max) nil)))
+
+
+(global-set-key (kbd "<f7>") 'indent-buffer)
+
+
+
+
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -125,3 +140,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+
