@@ -1,54 +1,16 @@
-;; 包管理
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (package-initialize)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-  )  
 
-(require 'cl)
+(package-initialize)
+(add-to-list 'load-path "~/.emacs.d/fred")
 
-;; add whatever packages you want here
-(defvar fred/packages '(
-			company
-			monokai-theme
-			hungry-delete
-			smex
-			swiper
-			counsel
-			smartparens
-			web-mode
-			exec-path-from-shell
-			) "Default packages")
-
-(setq package-selected-packages fred/packages)
-
-(defun fred/packages-installed-p ()
-  (loop for pkg in fred/packages
-	when (not (package-installed-p pkg)) do (return nil)
-	finally (return t)))
-
-(unless (fred/packages-installed-p)
-  (message "%s" "Refreshing package database...")
-  (package-refresh-contents)
-  (dolist (pkg fred/packages)
-    (when (not (package-installed-p pkg))
-      (package-install pkg))))
-
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
-
-
-(require 'hungry-delete)
-(global-hungry-delete-mode)
-
-
-(require 'smartparens-config)
-(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
+(require 'init-packages)
 
 
 
-(ivy-mode 1)
-(setq ivy-use-virtual-buffers t)
+(setq ring-bell-function 'ignore)
+
+
+(global-auto-revert-mode t)
+
 (global-set-key "\C-s" 'swiper)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 (global-set-key (kbd "<f6>") 'ivy-resume)
@@ -63,7 +25,7 @@
 
 
 
-(load-theme 'monokai t)
+
 
 ;; 关闭工具栏
 (tool-bar-mode -1)
@@ -84,14 +46,14 @@
 
 (global-set-key (kbd "<f2>") 'open-my-init-file)
 
-;; 代码补全
-(global-company-mode t)
+
 
 ;; 设置光标为竖线
 (setq-default cursor-type 'bar)
 
 ;; 禁止备份文件，后缀为～
 (setq make-backup-files nil)
+(setq auto-save-default nil)
 
 ;; 在org文件中代码高亮
 (require 'org)
@@ -102,6 +64,9 @@
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
+
+
+(global-set-key (kbd "C-h C-f") 'find-function)
 
 ;; 选中单词后输入直接替换
 (delete-selection-mode t)

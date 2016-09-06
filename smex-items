@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- shell
- shell-mode
  eval-buffer
+ shell
  delete-frame
  make-frame
  auto-fill-mode
  text-mode
+ replace-string
 )
 
 ;; ----- smex-data -----
@@ -20,7 +20,7 @@
  (auto-fill-mode . 1)
  (make-frame . 3)
  (delete-frame . 1)
- (eval-buffer . 1)
+ (eval-buffer . 2)
  (shell . 2)
  (shell-mode . 1)
 )
