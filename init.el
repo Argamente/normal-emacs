@@ -17,6 +17,7 @@
 			counsel
 			smartparens
 			web-mode
+			exec-path-from-shell
 			) "Default packages")
 
 (setq package-selected-packages fred/packages)
@@ -32,6 +33,9 @@
   (dolist (pkg fred/packages)
     (when (not (package-installed-p pkg))
       (package-install pkg))))
+
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
 
 
 (require 'hungry-delete)
@@ -133,7 +137,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(company-minimum-prefix-length 1)
- '(company-tooltip-idle-delay 0.08))
+ '(company-tooltip-idle-delay 0.02))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
